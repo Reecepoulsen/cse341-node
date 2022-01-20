@@ -59,16 +59,23 @@ main{
 }
 
 .form-control label,
-.form-control input{
+.form-control input,
+.form-control textarea{
   display: block;
   width: 100%;
   background: none;
   color: white;
 }
 
-.form-control input{
+.form-control input, 
+.form-control textarea{
   border: 1px solid rgb(104, 238, 193);
   border-radius: 2px;
+}
+
+.form-controller input:focus, 
+.form-control textarea:focus{
+  color: rgb(104, 238, 193)
 }
 
 .grid {
