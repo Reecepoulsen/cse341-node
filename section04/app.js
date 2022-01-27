@@ -54,7 +54,7 @@ const options = {
 
 const MONGODB_URL =
   process.env.MONGODB_URL ||
-  "mongodb+srv://<username>:<username>@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://admin:admin@cse341cluster-3dwlw.mongodb.net/shop?retryWrites=true&w=majority";
 
 mongoose
   .connect(MONGODB_URL, options)
