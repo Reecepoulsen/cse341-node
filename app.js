@@ -1,6 +1,8 @@
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 
+require('dotenv').config();
+
 const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -50,7 +52,7 @@ const options = {
 
 const MONGODB_URL =
   process.env.MONGODB_URL ||
-  "mongodb+srv://admin:admin@cluster0.ophu4.mongodb.net/shop?retryWrites=true&w=majority";
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ophu4.mongodb.net/shop?retryWrites=true&w=majority`;
 
 mongoose
   .connect(MONGODB_URL, options)
