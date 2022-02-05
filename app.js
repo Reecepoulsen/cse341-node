@@ -15,7 +15,8 @@ const flash = require("connect-flash");
 const errorController = require("./controllers/error");
 const User = require("./models/user");
 
-const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ophu4.mongodb.net/shop?&w=majority`;
+// const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ophu4.mongodb.net/shop?&w=majority`;
+const MONGODB_URI = `mongodb+srv://admin:admin@cluster0.ophu4.mongodb.net/shop?&w=majority`;
 
 const app = express();
 const store = new MongoDBStore({
