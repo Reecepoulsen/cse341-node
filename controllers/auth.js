@@ -100,7 +100,7 @@ exports.postSignup = (req, res, next) => {
           return transporter
             .sendMail({
               to: email,
-              from: "shop@node-complete.com",
+              from: "pou17004@byui.edu",
               subject: "Signup Successful!",
               html: "<h1>Your Account was successfully created</h1>",
             })
