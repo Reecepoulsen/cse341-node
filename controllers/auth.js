@@ -113,7 +113,11 @@ exports.postLogin = (req, res, next) => {
           console.log("bcrypt error", err);
         });
     })
-    .catch((err) => console.log("finding user error", err));
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
 };
 
 exports.postSignup = (req, res, next) => {
@@ -163,7 +167,9 @@ exports.postSignup = (req, res, next) => {
         });
     })
     .catch((err) => {
-      console.log("userDoc error", err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 };
 
@@ -219,7 +225,11 @@ exports.postReset = (req, res, next) => {
               `,
         });
       })
-      .catch((err) => console.log("Error Sending Email", err));
+      .catch((err) => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
+      });
   });
 };
 
@@ -241,7 +251,11 @@ exports.getNewPassword = (req, res, next) => {
         passwordToken: token,
       });
     })
-    .catch((err) => console.log("error getting rest token", err));
+    .catch((err) => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
 };
 
 exports.postNewPassword = (req, res, next) => {
@@ -269,6 +283,8 @@ exports.postNewPassword = (req, res, next) => {
       res.redirect("/login");
     })
     .catch((err) => {
-      console.log("error posting new password", err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 };
