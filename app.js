@@ -1,5 +1,5 @@
 const path = require("path");
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5555;
 
 require("dotenv").config();
 

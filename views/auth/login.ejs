@@ -1,6 +1,4 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/auth.css">
 </head>
 
 <body>
@@ -10,8 +8,8 @@
         <% if (errorMessage) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
         <% } %>
-        <form class="login-form" action="/login" method="POST">
-            <div class="form-control">
+        <form class="form" action="/login" method="POST">
+            <div>
                 <label for="email">E-Mail</label>
                 <input 
                     class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
@@ -20,7 +18,7 @@
                     id="email" 
                     value="<%= oldInput.email %>">
             </div>
-            <div class="form-control">
+            <div>
                 <label for="password">Password</label>
                 <input 
                     class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
@@ -29,11 +27,9 @@
                     id="password" 
                     value="<%= oldInput.password %>">
             </div>
+            <a href="/reset">Reset Password</a>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button class="btn" type="submit">Login</button>
         </form>
-        <div class="centered">
-            <a href="/reset">Reset Password</a>
-        </div>
     </main>
 <%- include('../includes/end.ejs') %>

@@ -10,8 +10,8 @@
         <% if (errorMessage) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
         <% } %>
-        <form class="login-form" action="/signup" method="POST" novalidate>
-            <div class="form-control">
+        <form class="form" action="/signup" method="POST" novalidate>
+            <div>
                 <label for="email">E-Mail</label>
                 <input 
                     class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
@@ -20,7 +20,7 @@
                     id="email" 
                     value="<%= oldInput.email %>">
             </div>
-            <div class="form-control">
+            <div>
                 <label for="password">Password</label>
                 <input 
                     class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
@@ -29,7 +29,7 @@
                     id="password" 
                     value="<%= oldInput.password %>">
             </div>
-            <div class="form-control">
+            <div>
                 <label for="confirmPassword">Confirm Password</label>
                 <input 
                     class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>"

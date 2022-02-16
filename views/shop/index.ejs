@@ -1,37 +1,37 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/product.css">
 </head>
-
 <body>
     <%- include('../includes/navigation.ejs') %>
-
-    <main>
-        <% if (prods.length > 0) { %>
-            <div class="grid">
-                <% for (let product of prods) { %>
-                    <article class="card product-item">
-                        <header class="card__header">
-                            <h1 class="product__title"><%= product.title %></h1>
-                        </header>
-                        <div class="card__image">
-                            <img src="<%= product.imageUrl %>"
-                                alt="<%= product.title %>">
-                        </div>
-                        <div class="card__content">
-                            <h2 class="product__price">$<%= product.price %></h2>
-                            <p class="product__description"><%= product.description %></p>
-                        </div>
-                        <div class="card__actions">
-                            <a href="/products/<%= product._id %>" class="btn">Details</a>
-                            <% if (isAuthenticated) { %>
-                                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-                            <% } %>
-                        </div>
-                    </article>
-                <% } %>
+  <main>
+    <div class="hero-banner">
+      <div class="hero-banner__overlay">
+        <h1>Looking For Sneakers? We've Got You Covered</h1>
+      </div>
+    </div>
+    <% if (prods.length > 0) { %>
+        <div class="grid-container">
+        <% for (let product of prods) { %>
+            <div class="card">
+                <img class="card__img" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                <div class="card__text">
+                    <h2 class="card__text-title"><%= product.title %></h2>
+                    <% if (isAuthenticated) { %>
+                    <i class="icofont-favourite card__text-heart"></i>
+                    <% } %>
+                    <h4 class="card__text-price">$<%= product.price %></h4>
+                    <% if (isAuthenticated) { %>
+                      <form class="card__text-cart" action="/cart" method="post">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="icon-btn"><i class="icofont-cart-alt"></i></button>
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                      </form>
+                    <% } %>
+                </div>
             </div>
-        <% } else { %>
-            <h1>No Products Found!</h1>
         <% } %>
-    </main>
-<%- include('../includes/end.ejs') %>
+        </div>
+    <% } else { %>
+        <h1>No Products Found!</h1>
+    <% } %>
+  </main>
+  <%- include('../includes/end.ejs') %>

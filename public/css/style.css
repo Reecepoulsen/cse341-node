@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+body {
+  padding: 0;
+  margin: 0;
+  padding-top: 70px;
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #212121;
+  color: #f6f6f6;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  margin: 30px 0px;
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0px;
+  color: #f6f6f6;
+  background-image: linear-gradient(135deg, #ad6705 0%, #bb4125 20%, #bb0746 33%, #a3006a 43%, #700f8a 53%, #0e52b9 63%, #0077c7 73%, #0094bd 83%, #08aaaa 100%);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  opacity: .9;
+}
+
+.nav h2 {
+  margin: 0;
+  padding: 0px 30px;
+  margin-top: -15px;
+}
+
+.nav h2 i {
+  font-size: 3rem;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.nav ul li {
+  padding: 0px 30px;
+}
+
+.nav ul li a {
+  color: #f6f6f6;
+  text-decoration: none;
+  -webkit-transition: ease 0.2s;
+  transition: ease 0.2s;
+}
+
+.nav ul li a:active, .nav ul li a:visited {
+  color: #f6f6f6;
+}
+
+.nav ul li a:hover {
+  color: #c3c3c3;
+}
+
+.nav .active {
+  position: relative;
+}
+
+.nav .active::after {
+  content: "";
+  width: 110%;
+  height: 2px;
+  background: #f6f6f6;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.nav__options {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.btn {
+  background: transparent;
+  font-size: 1.05rem;
+  color: #f6f6f6;
+  padding: 8px 12px;
+  border: solid 1px #f6f6f6;
+  border-radius: 8px;
+  -webkit-transition: ease 0.2s;
+  transition: ease 0.2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: #c3c3c3;
+  border: solid 1px #c3c3c3;
+}
+
+.hero-banner {
+  width: 90%;
+  margin: 0 auto;
+  background-image: url("../teal-smoke.jpeg");
+  height: 620px;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-banner__overlay {
+  width: 100%;
+  height: 100%;
+  color: #f6f6f6;
+  background: rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.hero-banner__overlay h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  width: 12ch;
+  line-height: 15rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -60%);
+          transform: translate(-50%, -60%);
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  width: 90%;
+  margin: 30px auto;
+}
+
+.card {
+  cursor: pointer;
+  border-radius: 12px;
+  padding-bottom: 30px;
+  -webkit-transition: ease 0.3s;
+  transition: ease 0.3s;
+}
+
+.card:hover {
+  -webkit-box-shadow: #09dcdc 0px 5px 15px;
+          box-shadow: #09dcdc 0px 5px 15px;
+  -webkit-transform: scale(1.015);
+          transform: scale(1.015);
+}
+
+.card__img {
+  border-radius: 12px;
+}
+
+.card__text {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+
+.card__text-title {
+  grid-column: 1/-1;
+}
+
+.card__text-price {
+  margin: 0;
+  font-size: 1.5rem;
+  margin-top: -5px;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.card__text i {
+  font-size: 1.8rem;
+  background-image: white;
+  -webkit-transition: ease 0.2s;
+  transition: ease 0.2s;
+}
+
+.card__text i:hover {
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #e28503 0%, #f05e28 17%, #f3304d 28%, #e6006b 37%, #c70092 45%, #8e11b0 53%, #4461e4 61%, #0089fa 69%, #00a7fa 77%, #00c4eb 85%, #09dcdc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card__text .icon-btn {
+  color: #f6f6f6;
+  background: none;
+  border: none;
+}
+
+.card__text-heart {
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
+.card__text-cart {
+  -ms-grid-column-align: left;
+      justify-self: left;
+}
+
+.form {
+  width: 30vw;
+  margin: 0 auto;
+  border: solid #f6f6f6 1px;
+  border-radius: 12px;
+  padding: 30px;
+  padding-bottom: 70px;
+  position: relative;
+}
+
+.form label {
+  display: block;
+}
+
+.form input, .form textarea {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  width: 98%;
+  height: 32px;
+  background: #545454;
+  color: #f6f6f6;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 8px;
+}
+
+.form input:focus, .form textarea:focus {
+  background: #3b3b3b;
+  outline: none;
+}
+
+.form textarea {
+  height: 75px;
+  padding: 8px;
+}
+
+.form a {
+  color: #f6f6f6;
+  text-decoration: none;
+}
+
+.form a:visited {
+  color: #f6f6f6;
+}
+
+.form a:hover {
+  color: #c3c3c3;
+}
+
+.form .btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+/*# sourceMappingURL=style.css.map */
