@@ -11,19 +11,25 @@
     <% if (prods.length > 0) { %>
         <div class="grid-container">
         <% for (let product of prods) { %>
+          <a class="card-anchor" href="/products/<%= product._id %>">
             <div class="card">
                 <img class="card__img" src="<%= product.imageUrl %>" alt="<%= product.title %>">
                 <div class="card__text">
                     <h2 class="card__text-title"><%= product.title %></h2>
                     <% if (isAuthenticated) { %>
-                    <i class="icofont-favourite card__text-heart"></i>
+                    <i class="icofont-favourite card__text-heart gradient-icon"></i>
                     <% } %>
                     <h4 class="card__text-price">$<%= product.price %></h4>
                     <% if (isAuthenticated) { %>
-                    <i class="icofont-cart-alt card__text-cart"></i>
+                      <form class="card__text-cart" action="/cart" method="post">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="icon-btn"><i class="icofont-cart-alt gradient-icon"></i></button>
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                      </form>
                     <% } %>
                 </div>
             </div>
+          </a>
         <% } %>
         </div>
     <% } else { %>

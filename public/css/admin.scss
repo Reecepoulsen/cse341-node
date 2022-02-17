@@ -1,0 +1,21 @@
+@import 'variables';
+
+.card{
+  &:hover{
+    box-shadow: none;
+    cursor: auto;
+    transform: none;
+  }
+
+  &__actions{
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+}

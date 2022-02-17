@@ -3,16 +3,27 @@
 
     <body>
         <%- include('../includes/navigation.ejs') %>
-        <main class="centered">
-            <h1><%= product.title %></h1>
+        <main>
+            <h1 class="details-title"><%= product.title %></h1>
             <hr>
-            <div class="image">
-                <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+            <div class="details-grid">
+                <div class="details-img-container">
+                    <img class="details-img" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                </div>
+                <div class="details">
+                    <h2 class="desc-h2">Description</h2>
+                    <p><%= product.description %></p>
+                    <div class="purchase-container">
+                        <h2 class="price-h2">Price: $<%= product.price %></h2>
+                        <% if (isAuthenticated) { %>
+                            <form class="card__text-cart" action="/cart" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button type="submit" class="btn gradient-icon add-btn">Add to Cart <i class="icofont-cart-alt"></i></button>
+                                <input type="hidden" name="productId" value="<%= product._id %>">
+                              </form>
+                        <% } %>
+                    </div>
+                </div>
             </div>
-            <h2><%= product.price %></h2>
-            <p><%= product.description %></p>
-            <% if (isAuthenticated) { %>
-                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-            <% } %>
         </main>
         <%- include('../includes/end.ejs') %>

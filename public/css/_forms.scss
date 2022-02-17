@@ -1,0 +1,48 @@
+.form {
+  width: 30vw;
+  margin: 0 auto;
+  border: solid #f6f6f6 1px;
+  border-radius: 12px;
+  padding: 30px;
+  padding-bottom: 70px;
+  position: relative;
+
+  label {
+    display: block;
+  }
+
+  input, textarea {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    width: 98%;
+    height: 32px;
+    background: lighten(#212121, 20%);
+    color: #f6f6f6;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 8px;
+
+    &:focus{
+      background: lighten(#212121, 10%);
+      outline: none;
+    }
+  }
+
+  textarea{
+    height: 75px;
+    padding: 8px;
+  }
+
+  a{
+    color: #f6f6f6;
+    text-decoration: none;
+    &:visited{color: #f6f6f6;}
+    &:hover{color: darken(#f6f6f6, 20%);}
+  }
+
+  .btn{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+}
