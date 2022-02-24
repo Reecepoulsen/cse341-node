@@ -21,9 +21,11 @@ const userSchema = new Schema({
           ref: 'Product',
           required: true
         },
-        quantity: { type: Number, required: true }
+        quantity: { type: Number, required: true },
+        totalPrice: { type: Number, required: true, default: 0 }
       }
-    ]
+    ],
+    cartTotal: { type: Number, required: true }
   }
 });
 
@@ -37,24 +39,32 @@ userSchema.methods.addToCart = function(product) {
   if (cartProductIndex >= 0) {
     newQuantity = this.cart.items[cartProductIndex].quantity + 1;
     updatedCartItems[cartProductIndex].quantity = newQuantity;
+    updatedCartItems[cartProductIndex].totalPrice = (newQuantity * product.price).toFixed(2);
   } else {
     updatedCartItems.push({
       productId: product._id,
-      quantity: newQuantity
+      quantity: newQuantity,
+      totalPrice: product.price
     });
   }
   const updatedCart = {
-    items: updatedCartItems
+    items: updatedCartItems,
+    cartTotal: this.cart.cartTotal + product.price
   };
   this.cart = updatedCart;
   return this.save();
 };
 
 userSchema.methods.removeFromCart = function(productId) {
+  let itemPrice = 0;
   const updatedCartItems = this.cart.items.filter(item => {
+    if (item.productId.toString() === productId.toString()){
+      itemPrice = item.totalPrice;
+    }
     return item.productId.toString() !== productId.toString();
   });
   this.cart.items = updatedCartItems;
+  this.cart.cartTotal = (this.cart.cartTotal - itemPrice).toFixed(2);
   return this.save();
 };
 
